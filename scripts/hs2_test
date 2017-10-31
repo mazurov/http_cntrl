@@ -1,0 +1,5 @@
+echo 'hello1'
+sleep 2
+echo 'hello2 after 2 seconds'
+sleep 2
+echo 'hello3 after 2 seconds'
