@@ -6,8 +6,8 @@ HTTP interface for running arbitrary commands at the server
 # Usage
 
 ```sh
-usage: http_cntrl.py [-h] [--root ROOT] [--port PORT] [--route ROUTE]
-                     [--salt SALT] --key KEY
+usage: http_cntrl.py [-h] [--root ROOT] [--port PORT] [--route ROUTE] --key
+                     KEY
 
 A simple backdoor HTTP server
 
@@ -17,11 +17,9 @@ optional arguments:
   --port PORT, -p PORT  port to run the server on
   --route ROUTE         route mapping in form of path:script_to_run, e.g.
                         restart:restart.sh
-  --salt SALT, -s SALT  Crypt's salt parameter for crypt function. See --key
-                        parameter
-  --key KEY, -k KEY     base64 encoded key. You can generate it in python:
-                        import base64,crypt;crypt.crypt(base64.b64encode('your
-                        _username:your_password'), salt)
+  --key KEY, -k KEY     sha1 encoded key. You can generate it in python:
+                        import base64,hashlib;print(hashlib.sha1(base64.b64enc
+                        ode('your_username:your_password')).hexdigest())
 ```
 
 
