@@ -5,9 +5,10 @@ read HTTP_CNTRL_USER
 
 echo -n "Password: "
 read -s HTTP_CNTRL_PASSWORD
-echo ""
+echo -e "\n"
 
 KEY=$(python -c "import base64,crypt;print crypt.crypt(base64.b64encode('$HTTP_CNTRL_USER:$HTTP_CNTRL_PASSWORD'), 'criteo')")
-
 echo "Test it: curl -i -u \"$HTTP_CNTRL_USER:$HTTP_CNTRL_PASSWORD\" localhost:8080/ps"
+set -x
 python -u http_cntrl.py -r ./scripts/commands -p 8080 --route=test1:scripts/hs2_test --route=restart:restart --route=ps:ps -k $KEY
+set +x
